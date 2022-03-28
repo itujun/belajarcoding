@@ -222,3 +222,11 @@ textarea:focus {
 .text-center {
     text-align: center;
 }
+
+
+.toolbar {
+	display: flex;
+	margin: 1rem 0;
+	justify-content: space-between;
+	align-items: center;
+}

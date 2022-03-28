@@ -1,6 +1,6 @@
 <?php
 
-class Article extends CI_Controller 
+class Article extends CI_Controller
 {
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Article extends CI_Controller
 		// mengambil artikel yg statusnya bukan draft
 		$data['articles'] = $this->article_model->get_published();
 
-		if(count($data['articles']) > 0){
+		if (count($data['articles']) > 0) {
 			// kirim data artikel ke view
 			$this->load->view('articles/list_article.php', $data);
 		} else {
@@ -27,9 +27,9 @@ class Article extends CI_Controller
 	public function show($slug = null)
 	{
 		// jika tidak ada slug di url, tampilkan 404
-		if(!$slug){
+		if (!$slug) {
 			show_404();
-		}	
+		}
 
 		// mengambil artikell dengan slug yg diperlukan
 		$data['article'] = $this->article_model->find_by_slug($slug);

@@ -100,4 +100,23 @@ class Article_model extends CI_Model
             ]
         ];
     }
+
+    // Method ini akan berfungsi untuk melakukan pencarian artikel dengan query LIKE.
+    public function search($keyword)
+    {
+        if (!$keyword) {
+            return null;
+        }
+        $this->db->like('title', $keyword);
+        $this->db->or_like('content', $keyword);
+        $query = $this->db->get($this->_table);
+        return $query->result();
+    }
+
+    // Method ini akan mengembalikan nilai berupa integer yang merupakan jumlah artikel yang sudah terbit.
+    public function get_published_count()
+    {
+        $query = $this->db->get_where($this->_table, ['draft' => 'FALSE']);
+        return $query->num_rows();
+    }
 }
